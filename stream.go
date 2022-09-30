@@ -13,7 +13,7 @@ import (
 	"io"
 )
 
-// NewWriter returns a new cipher.StreamWriter that encrypts the data written
+// NewWriter returns a new cipher.StreamWriter that typically encrypts the data written
 func NewWriter(key, iv []byte, w io.Writer) (*cipher.StreamWriter, error) {
 	stream, err := newStream(key, iv)
 	if err != nil {
@@ -22,7 +22,7 @@ func NewWriter(key, iv []byte, w io.Writer) (*cipher.StreamWriter, error) {
 	return &cipher.StreamWriter{S: stream, W: w}, nil
 }
 
-// NewReader returns a new cipher.StreamReader that decrypts the data read
+// NewReader returns a new cipher.StreamReader that typically decrypts the data read
 func NewReader(key, iv []byte, r io.Reader) (*cipher.StreamReader, error) {
 	stream, err := newStream(key, iv)
 	if err != nil {
